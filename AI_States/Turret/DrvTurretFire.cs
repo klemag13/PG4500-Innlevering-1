@@ -22,7 +22,7 @@ namespace PG4500_2015_Innlevering1.AI_States
 
 		public override string ProcessState()
 		{
-			return "Aim";
+			return "Idle";
 		}
 	}
 }

@@ -24,7 +24,6 @@ namespace PG4500_2015_Innlevering1.AI_States
 
 	
 			Robot.SetTurnRight(MathHelpers.normalizeBearing(Robot.Enemy.BearingDegrees));
-			Robot.SetTurnGunRight(MathHelpers.normalizeBearing(Robot.Heading - Robot.GunHeading + Robot.Enemy.BearingDegrees));
 			Robot.SetAhead(200);
 			
 		}
