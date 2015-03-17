@@ -7,3 +7,10 @@ C:\Users\Magnar\Documents\Visual Studio 2013\Projects\PG4500_2015_Innlevering1\P
 C:\Users\Magnar\Documents\Visual Studio 2013\Projects\PG4500_2015_Innlevering1\PG4500_2015_Innlevering1\obj\Debug\PG4500_2015_Innlevering1.pdb
 C:\robocode\robots\klemag\PG4500_2015_Innlevering1.dll
 C:\robocode\robots\klemag\PG4500_2015_Innlevering1.pdb
+C:\Users\Magnar\Documents\PG4500-Innlevering-1\obj\Debug\PG4500_2015_Innlevering1.csprojResolveAssemblyReference.cache
+C:\Users\Magnar\Documents\PG4500-Innlevering-1\obj\Debug\PG4500_2015_Innlevering1.dll
+C:\Users\Magnar\Documents\PG4500-Innlevering-1\obj\Debug\PG4500_2015_Innlevering1.pdb
+C:\Users\Magnar\Documents\PG4500-Innlevering-1\bin\Debug\PG4500_2015_Innlevering1.dll
+C:\Users\Magnar\Documents\PG4500-Innlevering-1\bin\Debug\PG4500_2015_Innlevering1.pdb
+C:\Users\Magnar\Documents\PG4500-Innlevering-1\bin\Debug\robocode.dll
+C:\Users\Magnar\Documents\PG4500-Innlevering-1\bin\Debug\robocode.xml

@@ -1,8 +1,8 @@
 ﻿using System.Drawing;
-using ExampleSetup.Robocode;
+using PG4500_2015_Innlevering1.Robocode;
 using Santom;
 
-namespace ExampleSetup.AI_States
+namespace PG4500_2015_Innlevering1.AI_States
 {
 	public class DrvWheelsEngage : State
 	{

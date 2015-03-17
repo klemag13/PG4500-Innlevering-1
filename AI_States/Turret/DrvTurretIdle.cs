@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ExampleSetup.Robocode;
+using PG4500_2015_Innlevering1.Robocode;
 
-namespace ExampleSetup.AI_States
+namespace PG4500_2015_Innlevering1.AI_States
 {
 	class DrvTurrentIdle : State
 	{

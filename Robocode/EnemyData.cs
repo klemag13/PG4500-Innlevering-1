@@ -2,7 +2,7 @@
 using Robocode.Util;
 using Santom;
 
-namespace ExampleSetup.Robocode
+namespace PG4500_2015_Innlevering1.Robocode
 {
 	/// <summary>
 	/// Helper class, storing data about scanned enemies (including the timestamp (turn) for that scan of data). 

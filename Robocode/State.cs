@@ -1,4 +1,4 @@
-﻿namespace ExampleSetup.Robocode
+﻿namespace PG4500_2015_Innlevering1.Robocode
 {
 	/// <summary>
 	/// Base class for states in the FSM. Should be inherited from.

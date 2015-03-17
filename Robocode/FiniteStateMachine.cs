@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ExampleSetup.Robocode
+namespace PG4500_2015_Innlevering1.Robocode
 {
 	/// <summary>
 	/// Generic Finite State Machine class, for hardcoded FSMs.

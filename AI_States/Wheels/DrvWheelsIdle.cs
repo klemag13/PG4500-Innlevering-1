@@ -1,6 +1,6 @@
-﻿using ExampleSetup.Robocode;
+﻿using PG4500_2015_Innlevering1.Robocode;
 
-namespace ExampleSetup.AI_States
+namespace PG4500_2015_Innlevering1.AI_States
 {
 	public class DrvWheelsIdle : State
 	{

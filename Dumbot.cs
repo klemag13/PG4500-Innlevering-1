@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
-using ExampleSetup.AI_States;
-using ExampleSetup.Robocode;
+using PG4500_2015_Innlevering1.AI_States;
+using PG4500_2015_Innlevering1.Robocode;
 using Robocode;
 using Robocode.Util;
 using Santom;
