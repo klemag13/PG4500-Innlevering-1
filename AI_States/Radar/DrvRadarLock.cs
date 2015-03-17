@@ -28,7 +28,10 @@ namespace PG4500_2015_Innlevering1.AI_States
 			Robot.SetTurnRadarRightRadians(Utils.NormalRelativeAngle(radarTurn));
 
 			// ...
-			return "Lock";
+			if (Robot.HasLock)
+				return "Lock";
+			else
+				return "Search";
 		}
 	}
 }

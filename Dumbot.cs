@@ -10,7 +10,7 @@ using Santom;
 namespace PG4500_2015_Innlevering1
 {
 	// ReSharper disable once InconsistentNaming
-	public class klemag_DumBot : AdvancedRobotEx
+	public class klemag_hyleiv_DumBot : AdvancedRobotEx
 	{
 		// P R I V A T E / P R O T E C T E D   V A R S
 		// -------------------------------------------
@@ -23,7 +23,7 @@ namespace PG4500_2015_Innlevering1
 		// P U B L I C   M E T H O D S 
 		// ---------------------------
 
-		public klemag_DumBot()
+		public klemag_hyleiv_DumBot()
 		{
 			// Defining the possible states for this fsm. (Also, the 1st one listed becomes the default state.)
 			_radarFSM = new FiniteStateMachine(new State[] { new DrvRadarSearch(), new DrvRadarLock() });
