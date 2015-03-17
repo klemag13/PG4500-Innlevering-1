@@ -24,6 +24,7 @@ namespace PG4500_2015_Innlevering1.Robocode
 		public double BearingDegrees { get { return Utils.ToDegrees(BearingRadians); } set { BearingRadians = Utils.ToRadians(value); } }  // Bearing from us to enemy, in degrees.
 		public double Distance { get; set; }  // Distance from us to enemy.
 		public double Energy { get; set; }  // Energy of enemy.
+		public double PreviousEnergy { get; set; }  // Energy of enemy.
 		public Point2D Position { get; set; }  // Position of enemy, in battlefield x y coordinates.
 		public double Velocity { get; set; }  // Velocity of enemy.
 		public double Acceleration { get; set; }  // How fast our enemy changes speed. (Calculated by comparing values over 2 scans.)
@@ -46,6 +47,7 @@ namespace PG4500_2015_Innlevering1.Robocode
 			BearingRadians = 0.0;
 			Distance = 0.0;
 			Energy = 0.0;
+			PreviousEnergy = 0.0;
 			Position = new Point2D();
 			Velocity = 0.0;
 			Acceleration = 0.0;
@@ -63,6 +65,7 @@ namespace PG4500_2015_Innlevering1.Robocode
 			Name = cloneMe.Name;
 			BearingRadians = cloneMe.BearingRadians;
 			Distance = cloneMe.Distance;
+			PreviousEnergy = Energy;
 			Energy = cloneMe.Energy;
 			Position = new Point2D(cloneMe.Position);
 			Velocity = cloneMe.Velocity;

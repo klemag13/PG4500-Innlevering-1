@@ -17,6 +17,11 @@ namespace PG4500_2015_Innlevering1.AI_States
 
 		}
 
+		public override void EnterState()
+		{
+			base.EnterState();
+		}
+
 		public override string ProcessState()
 		{
 			// Do calculations

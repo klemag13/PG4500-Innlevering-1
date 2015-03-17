@@ -18,6 +18,7 @@ namespace PG4500_2015_Innlevering1.AI_States
 
 		public override string ProcessState()
 		{
+			Robot.SetAhead(-100);
 			return "Idle";
 		}
 	}
