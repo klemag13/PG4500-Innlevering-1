@@ -35,7 +35,7 @@ namespace PG4500_2015_Innlevering1
 		public override void Run()
 		{
 			InitBot();
-			
+			int a = 0;
 			// Loop forever. (Exiting run means no more robot fun for us!)
 			while (true) {
 
