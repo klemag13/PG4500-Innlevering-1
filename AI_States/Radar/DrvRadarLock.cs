@@ -15,6 +15,8 @@ namespace PG4500_2015_Innlevering1.AI_States
 
 		}
 
+
+
 		public override string ProcessState()
 		{
 			double radarTurn =
@@ -26,7 +28,7 @@ namespace PG4500_2015_Innlevering1.AI_States
 			Robot.SetTurnRadarRightRadians(Utils.NormalRelativeAngle(radarTurn));
 
 			// ...
-			return null;
+			return "Lock";
 		}
 	}
 }

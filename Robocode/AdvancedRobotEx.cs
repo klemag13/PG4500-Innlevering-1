@@ -29,6 +29,7 @@ namespace PG4500_2015_Innlevering1.Robocode
 		// -------------------
 
 		public EnemyData Enemy { get; set; }  // Stored info about our current radar target. (Wiped each round/match.)
+		public bool HasLock { get; set; }
 
 
 		// P U B L I C   M E T H O D S 

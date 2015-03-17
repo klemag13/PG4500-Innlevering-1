@@ -11,7 +11,7 @@ namespace PG4500_2015_Innlevering1.AI_States
 {
 	class DrvTurretAim : State
 	{
-		
+		bool IsGunTurning = false;
 		public DrvTurretAim() : base("Aim")
 		{
 
@@ -19,12 +19,21 @@ namespace PG4500_2015_Innlevering1.AI_States
 
 		public override string ProcessState()
 		{
-			Robot.SetTurnGunRight(MathHelpers.normalizeBearing(Robot.Heading - Robot.GunHeading + Robot.Enemy.BearingDegrees));
-
 			// Do calculations
-			if(Robot.GunHeat == 0 && Robot.GunTurnRemaining == 0) // and if the barrel is angeled correctly
+			if (!IsGunTurning)
+			{
+				Robot.SetTurnGunRight(MathHelpers.normalizeBearing(Robot.Heading - Robot.GunHeading + Robot.Enemy.BearingDegrees));
+				IsGunTurning = true;
+			}
+			else if (Robot.GunTurnRemaining == 0.0)
+				IsGunTurning = false;
+			
+			if (Robot.HasLock && Robot.GunHeat == 0.0 && !IsGunTurning) // and if the barrel is angeled correctly
 				return "Fire";
-			return "Idle";
+			else if (Robot.HasLock)
+				return "Aim";
+			else
+				return "Idle";
 		}
 	}
 }
