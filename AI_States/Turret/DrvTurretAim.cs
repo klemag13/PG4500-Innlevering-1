@@ -33,7 +33,7 @@ namespace PG4500_2015_Innlevering1.AI_States
 					e.Position.X + e.Velocity * Math.Cos(e.HeadingRadians),
 					e.Position.Y + e.Velocity * Math.Sin(e.HeadingRadians));
 				//Robot.SetTurnGunRightRadians(Math.Atan2(aim.Y - Robot.X, aim.X - Robot.Y) - Robot.HeadingRadians);
-				//Robot.SetTurnGunRight(MathHelpers.normalizeBearing(Robot.Heading - Robot.GunHeading + Robot.Enemy.BearingDegrees));
+				Robot.SetTurnGunRight(MathHelpers.normalizeBearing(Robot.Heading - Robot.GunHeading + Robot.Enemy.BearingDegrees));
 				IsGunTurning = true;
 			}
 			else if (Robot.GunTurnRemaining == 0.0)
