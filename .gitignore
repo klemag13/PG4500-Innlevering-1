@@ -1,35 +1,4 @@
 #################
-## Eclipse
-#################
-
-*.pydevproject
-.project
-.metadata
-bin/
-tmp/
-*.tmp
-*.bak
-*.swp
-*~.nib
-local.properties
-.classpath
-.settings/
-.loadpath
-
-# External tool builders
-.externalToolBuilders/
-
-# Locally stored "Eclipse launch configurations"
-*.launch
-
-# CDT-specific
-.cproject
-
-# PDT-specific
-.buildpath
-
-
-#################
 ## Visual Studio
 #################
 
@@ -39,7 +8,7 @@ local.properties
 # User-specific files
 *.suo
 *.user
-*.sln.docstates
+*.sln
 *.cache
 
 # Build results
@@ -50,6 +19,8 @@ x64/
 build/
 [Bb]in/
 [Oo]bj/
+bin/
+ojb/
 
 # MSTest test Results
 [Tt]est[Rr]esult*/
