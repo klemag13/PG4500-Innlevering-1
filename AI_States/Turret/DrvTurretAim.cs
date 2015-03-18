@@ -16,19 +16,24 @@ namespace PG4500_2015_Innlevering1.AI_States
 		{
 
 		}
+		private double calculateBearing(EnemyData e)
+		{
+			Vector2D target = new Vector2D(
+				e.Position.X + e.Velocity * Math.Sin(e.HeadingRadians + e.TurnRateRadians),
+				e.Position.Y + e.Velocity * Math.Cos(e.HeadingRadians + e.TurnRateRadians)
+			);
+			double targetRotation = Math.Atan2(target.X - Robot.X, target.Y - Robot.Y) * (180 / Math.PI);
 
+			if (targetRotation > 0)
+				return targetRotation - Robot.GunHeading;
+			else
+				return targetRotation - Robot.GunHeading + 360;
+		}
 		public override string ProcessState()
 		{
-			// Do calculations
 			if (!IsGunTurning)
 			{
-				EnemyData e = Robot.Enemy;
-				Vector2D aim;
-				aim = new Vector2D(
-					e.Position.X + e.Velocity * Math.Cos(e.HeadingRadians),
-					e.Position.Y + e.Velocity * Math.Sin(e.HeadingRadians));
-				//Robot.SetTurnGunRightRadians(Math.Atan2(aim.Y - Robot.X, aim.X - Robot.Y) - Robot.HeadingRadians);
-				//Robot.SetTurnGunRight(MathHelpers.normalizeBearing(Robot.Heading - Robot.GunHeading + Robot.Enemy.BearingDegrees));
+				Robot.SetTurnGunRight(MathHelpers.normalizeBearing(calculateBearing(Robot.Enemy)));
 				IsGunTurning = true;
 			}
 			else if (Robot.GunTurnRemaining == 0.0)
@@ -41,13 +46,5 @@ namespace PG4500_2015_Innlevering1.AI_States
 			else
 				return "Idle";
 		}
-		/*
-		 * EnemyData e = Robot.Enemy;
-			Vector2D aim;
-			aim = new Vector2D(
-				e.Position.X + e.Velocity * Math.Cos(e.HeadingDegrees), 
-				e.Position.Y + e.Velocity * Math.Sin(e.HeadingDegrees));
-			Robot.SetTurnGunRight(Math.Atan2(aim.X, aim.Y) - Robot.Heading);
-		 */
 	}
 }
