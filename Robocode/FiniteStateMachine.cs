@@ -60,7 +60,7 @@ namespace PG4500_2015_Innlevering1.Robocode
 		/// <summary>
 		/// Queue up a new state (as long as it is registered as a possible state for this FSM).
 		/// </summary>
-		public void Queue(string stateId, bool deferred)
+		public void Queue(string stateId)
 		{
 			State newState = null;
 			foreach (State element in _possibleStates) {
@@ -71,7 +71,7 @@ namespace PG4500_2015_Innlevering1.Robocode
 			}
 
 			if (null != newState) {
-				if (deferred)
+				if (newState.IsDeferred)
 					_derefferedTransitionQueue.Enqueue(newState);
 				else
 					_transitionQueue.Enqueue(newState);
@@ -110,13 +110,13 @@ namespace PG4500_2015_Innlevering1.Robocode
 
 				// If current AI action triggered a transition, queue it up.
 				if (null != queueStateId) {
-					Queue(queueStateId, false);
+					Queue(queueStateId);
 				}
 
 			} while (0 < _transitionQueue.Count);
 
 			foreach (State s in _derefferedTransitionQueue)
-				Queue(s.Id, false);
+				Queue(s.Id);
 
 			_derefferedTransitionQueue.Clear();
 		}
