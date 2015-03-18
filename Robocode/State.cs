@@ -17,7 +17,6 @@
 		// -------------------
 
 		public string Id { get; private set; }
-		public bool IsDeferred { get; set; }
 
 
 		// P U B L I C   M E T H O D S 
