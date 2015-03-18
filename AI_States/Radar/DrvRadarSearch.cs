@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PG4500_2015_Innlevering1.Robocode;
+using Robocode;
 using Santom;
 
 namespace PG4500_2015_Innlevering1.AI_States
@@ -18,7 +19,7 @@ namespace PG4500_2015_Innlevering1.AI_States
 		public override string ProcessState()
 		{
 			if (Robot.Enemy.Name == null) // We haven't seen the enemy yet
-				Robot.SetTurnRadarRight(10);
+				Robot.SetTurnRadarRight(Rules.RADAR_TURN_RATE);
 			else // We lost the enemy, search in the direction of the last known position
 			{
 				// Get the angle between the radarheading and the robot.
