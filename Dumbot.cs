@@ -45,10 +45,12 @@ namespace PG4500_2015_Innlevering1
 				_turretFSM.Update();
 				_wheelsFSM.Update();
 
+				if (Enemy.PreviousEnergy - Enemy.Energy > 0.1)
+					_wheelsFSM.Queue("Dodge");
 				// Execute any current actions. NOTE: This sometimes triggers a blocking call internally, so this should be the last thing we do in a turn!
 				HasLock = false;
-				Execute();
 
+				Execute();
 			}
 			// ReSharper disable once FunctionNeverReturns
 		}
@@ -109,10 +111,13 @@ namespace PG4500_2015_Innlevering1
 			return targetVector;
 		}
 
-		public override void OnBulletHit(BulletHitEvent hitData)
+		//Code from http://robowiki.net/wiki/Wave_Suffering
+		public override void OnBulletHit(BulletHitEvent e)
 		{
-			base.OnBulletHit(hitData);
+			base.OnBulletHit(e);
 			FireThreshold *= 1.2;
+			double bulletPower = e.Bullet.Power;
+			Enemy.PreviousEnergy -= Rules.GetBulletDamage(bulletPower);
 		}
 
 		public override void OnBulletMissed(BulletMissedEvent evnt)
@@ -120,6 +125,10 @@ namespace PG4500_2015_Innlevering1
 			base.OnBulletMissed(evnt);
 			if (FireThreshold >= 200)
 				FireThreshold *= 0.9;
+		}
+		public override void OnHitByBullet(HitByBulletEvent e)
+		{
+			Enemy.PreviousEnergy += Rules.GetBulletHitBonus(e.Bullet.Power);
 		}
 	}
 }
