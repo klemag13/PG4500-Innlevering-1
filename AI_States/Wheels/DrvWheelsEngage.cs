@@ -26,35 +26,7 @@ namespace PG4500_2015_Innlevering1.AI_States
 		{
 
 			base.EnterState();
-
-			_targetPosition = Robot.Enemy.Position;
-
-			// Check 8 points around the tank for a suitable position.
-			if(Robot.Enemy.HeadingDegrees < 90 || Robot.Enemy.HeadingDegrees > 270) // Pick points on the north side, because the tank is facing north.
-			{
-				// Check which side is closest to a wall, and pick the opposite
-				if (Robot.Enemy.Position.X <= 400) // He's closest to the left wall
-				{
-					Robot.Seek(new Point2D(Robot.Enemy.Position.X + 100, Robot.Enemy.Position.Y + 100));
-				}
-				else // right wall;
-				{
-					Robot.Seek(new Point2D(Robot.Enemy.Position.X - 100, Robot.Enemy.Position.Y + 100));
-
-				}
-			}
-			else // Pick points on the south side.
-			{
-				// Check which side is closest to a wall, and pick the opposite
-				if (Robot.Enemy.Position.X <= 400) // He's closest to the left wall
-				{
-					Robot.Seek(new Point2D(Robot.Enemy.Position.X + 100, Robot.Enemy.Position.Y - 100));
-				}
-				else // right wall;
-				{
-					Robot.Seek(new Point2D(Robot.Enemy.Position.X - 100, Robot.Enemy.Position.Y - 100));
-				}
-			}			
+			_targetPosition = Robot.Enemy.Position;		
 		}
 
 
@@ -66,8 +38,7 @@ namespace PG4500_2015_Innlevering1.AI_States
 			Waypoint[] waypoints = { new Waypoint(Robot, new Point2D(Robot.Enemy.Position.X + 150, Robot.Enemy.Position.Y + 150)),
 									 new Waypoint(Robot, new Point2D(Robot.Enemy.Position.X - 150, Robot.Enemy.Position.Y + 150)),
 									 new Waypoint(Robot, new Point2D(Robot.Enemy.Position.X + 150, Robot.Enemy.Position.Y - 150)),
-									 new Waypoint(Robot, new Point2D(Robot.Enemy.Position.X - 150, Robot.Enemy.Position.Y - 150))
-								   };
+									 new Waypoint(Robot, new Point2D(Robot.Enemy.Position.X - 150, Robot.Enemy.Position.Y - 150)) };
 			// Keep track of the best waypoint
 			int waypointIndex = 0;
 
