@@ -52,6 +52,22 @@ namespace PG4500_2015_Innlevering1.Robocode
 			return Math.Abs(TurnRemaining).IsCloseToZero();
 		}
 
+		public void Seek(Point2D target)
+		{
+			Waypoint destination = new Waypoint(this, target);
+			SetTurnRight(destination.Angle);
+			if(TurnCompleted())
+				SetAhead(destination.Distance);
+		}
+
+		public void Flee(Point2D target)
+		{
+			Waypoint destination = new Waypoint(this, target);
+			SetTurnRight(destination.Angle);
+			if (TurnCompleted())
+				SetAhead(-destination.Distance);
+		}
+
 
 		/// <summary>
 		/// Method to draw half-transparent targeting-line (from start to end) & targeting-box (the size of a robot) 

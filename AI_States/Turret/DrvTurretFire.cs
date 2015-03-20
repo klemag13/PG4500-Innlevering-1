@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PG4500_2015_Innlevering1.Robocode;
+using Robocode;
 
 namespace PG4500_2015_Innlevering1.AI_States
 {
