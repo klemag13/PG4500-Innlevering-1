@@ -72,10 +72,11 @@ namespace PG4500_2015_Innlevering1
 
 			// If we're out of energy, don't bother swapping states, as that will just make runtime bugs.
 			if (!Energy.IsCloseToZero()) {
-				if (hasEnemyFired)
+				if (hasEnemyFired && DistanceCompleted())
 					_wheelsFSM.Queue("Dodge");
 				else
 					_wheelsFSM.Queue("Engage");
+
 				_turretFSM.Queue("Aim");
 				_radarFSM.Queue("Lock");
 			}
