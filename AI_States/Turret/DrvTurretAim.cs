@@ -42,7 +42,7 @@ namespace PG4500_2015_Innlevering1.AI_States
 				if (bDistance > eDistance)
 					break;
 			}
-			Robot.DrawLineAndTarget(Color.Gold, new Point2D(target - 3), new Point2D(target + 3));
+			Robot.DrawLineAndTarget(Color.Gold, new Point2D(target - 1), new Point2D(target + 1));
 			double targetRotation = Math.Atan2(target.X - Robot.X, target.Y - Robot.Y) * (180 / Math.PI);
 			
 			if (targetRotation > 0)
