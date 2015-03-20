@@ -41,16 +41,21 @@ namespace PG4500_2015_Innlevering1
 			while (true) {
 
 				// The state machine doing its "magic".
+
+
+
 				_radarFSM.Update();
 				_turretFSM.Update();
 				_wheelsFSM.Update();
 
-				if (Enemy.PreviousEnergy - Enemy.Energy > 0.1)
-					_wheelsFSM.Queue("Dodge");
+
+			
 				// Execute any current actions. NOTE: This sometimes triggers a blocking call internally, so this should be the last thing we do in a turn!
 				HasLock = false;
 
 				Execute();
+				if (Enemy.PreviousEnergy - Enemy.Energy >= Rules.MIN_BULLET_POWER)
+					_wheelsFSM.Queue("Dodge");
 			}
 			// ReSharper disable once FunctionNeverReturns
 		}
