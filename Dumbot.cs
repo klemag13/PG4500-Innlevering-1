@@ -55,16 +55,14 @@ namespace PG4500_2015_Innlevering1
 
 		public override void OnScannedRobot(ScannedRobotEvent scanData)
 		{
+			HasLock = true;
 			// Storing data about scan time and Enemy for later use.
 			Vector2D offset = CalculateTargetVector(HeadingRadians, scanData.BearingRadians, scanData.Distance);
 			Point2D position = new Point2D(offset.X + X, offset.Y + Y);
 			Enemy.SetEnemyData(scanData, position);
 
-			HasLock = true;
-
 			// If we're out of energy, don't bother swapping states, as that will just make runtime bugs.
 			if (!Energy.IsCloseToZero()) {
-				Flee(new Point2D(300, 300));
 				//_wheelsFSM.Queue("Engage");
 				_turretFSM.Queue("Aim");
 				_radarFSM.Queue("Lock");
@@ -84,8 +82,13 @@ namespace PG4500_2015_Innlevering1
 			_wheelsFSM.Init(this);
 
 			// Set some colors on our robot. (Body, gun, radar, bullet, and scan arc.)
-			SetColors(Color.LightSlateGray, Color.DimGray, Color.Gray, Color.White, Color.LightPink);
-
+			SetColors(
+				Color.DarkRed, //Body
+				Color.Black, //Gun
+				Color.OrangeRed, //Radar
+				Color.OrangeRed, //Bullet
+				Color.Red//Scan arc
+			);
 			// NOTE: Total distance each element can move remains the same, whether these ones are true or false. 
 			//       Example: Gun swivels a maximum of 20 degrees in addition to what the body swivels (if anything) 
 			//       each turn, no matter what IsAdjustGunForRobotTurn is set to.
