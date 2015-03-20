@@ -32,10 +32,10 @@ namespace PG4500_2015_Innlevering1.AI_States
 			double bVelocity = 20 - 3 * Rules.MAX_BULLET_POWER;
 			double eDistance = 0, bDistance = 0;
 			Vector2D target = new Vector2D(e.Position.X, e.Position.Y);
-			for (n = 1; n <= t; n++)
+			for (n = 0; n <= t; n++)
 			{
-				target.X += e.Velocity*Math.Sin(e.HeadingRadians + e.TurnRateRadians);
-				target.Y += e.Velocity*Math.Cos(e.HeadingRadians + e.TurnRateRadians);
+				target.X += e.Velocity*Math.Sin(e.HeadingRadians + e.TurnRateRadians * n);
+				target.Y += e.Velocity*Math.Cos(e.HeadingRadians + e.TurnRateRadians * n);
 				constrain(target);
 				eDistance = new Vector2D(Robot.X, Robot.Y).Distance(target);
 				bDistance = bVelocity * n;
