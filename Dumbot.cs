@@ -19,6 +19,7 @@ namespace PG4500_2015_Innlevering1
 		private readonly FiniteStateMachine _turretFSM;
 		private readonly FiniteStateMachine _wheelsFSM;
 
+		private bool hasEnemyFired = false;
 
 		// P U B L I C   M E T H O D S 
 		// ---------------------------
@@ -41,21 +42,21 @@ namespace PG4500_2015_Innlevering1
 			while (true) {
 
 				// The state machine doing its "magic".
-
-
-
+				if (hasEnemyFired && DistanceCompleted())
+					hasEnemyFired = false;
+				if (Enemy.PreviousEnergy - Enemy.Energy >= Rules.MIN_BULLET_POWER)
+					hasEnemyFired = true;
+					
 				_radarFSM.Update();
 				_turretFSM.Update();
 				_wheelsFSM.Update();
 
 
-			
 				// Execute any current actions. NOTE: This sometimes triggers a blocking call internally, so this should be the last thing we do in a turn!
 				HasLock = false;
 
 				Execute();
-				if (Enemy.PreviousEnergy - Enemy.Energy >= Rules.MIN_BULLET_POWER)
-					_wheelsFSM.Queue("Dodge");
+
 			}
 			// ReSharper disable once FunctionNeverReturns
 		}
@@ -71,7 +72,10 @@ namespace PG4500_2015_Innlevering1
 
 			// If we're out of energy, don't bother swapping states, as that will just make runtime bugs.
 			if (!Energy.IsCloseToZero()) {
-				_wheelsFSM.Queue("Engage");
+				if (hasEnemyFired)
+					_wheelsFSM.Queue("Dodge");
+				else
+					_wheelsFSM.Queue("Engage");
 				_turretFSM.Queue("Aim");
 				_radarFSM.Queue("Lock");
 			}

@@ -103,7 +103,7 @@ namespace PG4500_2015_Innlevering1.Robocode
 			long deltaTime = newEnemyData.Time - Time;
 			TurnRateRadians = Utils.NormalRelativeAngle(newEnemyData.HeadingRadians - HeadingRadians) / deltaTime;
 			Acceleration = (newEnemyData.Velocity - Velocity) / deltaTime;
-
+			PreviousEnergy = Energy;
 			// General data:
 			Time = newEnemyData.Time;
 			
@@ -117,6 +117,7 @@ namespace PG4500_2015_Innlevering1.Robocode
 			Position = newPosition;
 			Velocity = newEnemyData.Velocity;
 			HeadingRadians = newEnemyData.HeadingRadians;
+			
 		}
 	}
 }
