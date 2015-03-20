@@ -24,8 +24,10 @@ namespace PG4500_2015_Innlevering1
 		{
 			get
 			{
-				return MathHelpers.normalizeBearing(-Robot.Heading) + // X and Y are swapped in atan2 because of robocode's weird coordinate system.
+				double angle = -MathHelpers.normalizeBearing(Robot.Heading) + // X and Y are swapped in atan2 because of robocode's weird coordinate system.
 						(Math.Atan2(Destination.X - Robot.X, Destination.Y - Robot.Y) * (180 / 3.1415));
+				Robot.Out.WriteLine("-Robot.Heading + Atan2(X,Y) = Angle:	" + MathHelpers.normalizeBearing(-Robot.Heading) + " + " + (Math.Atan2(Destination.X - Robot.X, Destination.Y - Robot.Y) * (180 / 3.1415)) + " = " + MathHelpers.normalizeBearing(angle)); 
+				return MathHelpers.normalizeBearing(angle);
 			}
 		}
 		public Point2D Destination { get; private set; }

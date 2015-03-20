@@ -26,6 +26,7 @@ namespace PG4500_2015_Innlevering1.AI_States
 				double angle = MathHelpers.normalizeBearing( -Robot.RadarHeading) + // X and Y are swapped in atan2 because of robocode's weird coordinate system.
 						(Math.Atan2(Robot.Enemy.Position.X - Robot.X, Robot.Enemy.Position.Y - Robot.Y) * (180 / 3.1415));
 
+				angle = MathHelpers.normalizeBearing(angle);
 				if (angle > -0.001 && angle < 0.001)
 					Robot.SetTurnRadarRight(Rules.RADAR_TURN_RATE);
 				else 

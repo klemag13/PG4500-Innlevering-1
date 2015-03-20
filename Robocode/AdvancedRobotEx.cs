@@ -54,18 +54,22 @@ namespace PG4500_2015_Innlevering1.Robocode
 
 		public void Seek(Point2D target)
 		{
+
 			Waypoint destination = new Waypoint(this, target);
 			SetTurnRight(destination.Angle);
-			if(TurnCompleted())
+			DrawLineAndTarget(Color.Red, new Point2D(X, Y), target);
+			//if(TurnCompleted())
 				SetAhead(destination.Distance);
 		}
 
 		public void Flee(Point2D target)
 		{
 			Waypoint destination = new Waypoint(this, target);
+			DrawLineAndTarget(Color.Red, new Point2D(X, Y), target);
 			SetTurnRight(destination.Angle);
 			if (TurnCompleted())
 				SetAhead(-destination.Distance);
+
 		}
 
 

@@ -29,18 +29,32 @@ namespace PG4500_2015_Innlevering1.AI_States
 
 			_targetPosition = Robot.Enemy.Position;
 
-			// Approach until it's close enough then line up next to it
-			if (Robot.Enemy.Distance > 200)
+			// Check 8 points around the tank for a suitable position.
+			if(Robot.Enemy.HeadingDegrees < 90 || Robot.Enemy.HeadingDegrees > 270) // Pick points on the north side, because the tank is facing north.
 			{
-				Robot.SetTurnRight(MathHelpers.normalizeBearing(Robot.Enemy.BearingDegrees));
-				Robot.SetAhead(Robot.Enemy.Distance - 200);
+				// Check which side is closest to a wall, and pick the opposite
+				if (Robot.Enemy.Position.X <= 400) // He's closest to the left wall
+				{
+					Robot.Seek(new Point2D(Robot.Enemy.Position.X + 100, Robot.Enemy.Position.Y + 100));
+				}
+				else // right wall;
+				{
+					Robot.Seek(new Point2D(Robot.Enemy.Position.X - 100, Robot.Enemy.Position.Y + 100));
+
+				}
 			}
-			else
+			else // Pick points on the south side.
 			{
-				Robot.SetTurnRight(MathHelpers.normalizeBearing(-Robot.Heading + Robot.Enemy.HeadingDegrees));
-				Robot.SetAhead(20);
-			}
-			
+				// Check which side is closest to a wall, and pick the opposite
+				if (Robot.Enemy.Position.X <= 400) // He's closest to the left wall
+				{
+					Robot.Seek(new Point2D(Robot.Enemy.Position.X + 100, Robot.Enemy.Position.Y - 100));
+				}
+				else // right wall;
+				{
+					Robot.Seek(new Point2D(Robot.Enemy.Position.X - 100, Robot.Enemy.Position.Y - 100));
+				}
+			}			
 		}
 
 
@@ -48,17 +62,54 @@ namespace PG4500_2015_Innlevering1.AI_States
 		{
 			_targetPosition = Robot.Enemy.Position;
 
+			// Add the points in a list
+			Waypoint[] waypoints = { new Waypoint(Robot, new Point2D(Robot.Enemy.Position.X + 100, Robot.Enemy.Position.Y + 100)),
+									 new Waypoint(Robot, new Point2D(Robot.Enemy.Position.X + 100, Robot.Enemy.Position.Y + 100)),
+									 new Waypoint(Robot, new Point2D(Robot.Enemy.Position.X + 100, Robot.Enemy.Position.Y + 100)),
+									 new Waypoint(Robot, new Point2D(Robot.Enemy.Position.X + 100, Robot.Enemy.Position.Y + 100))
+								   };
+			// Keep track of the best waypoint
+			int waypointIndex = 0;
+
+			for (int i = 0; i < 4; i++ )
+			{
+				// Is the point on the map?
+				if (waypoints[i].Destination.X > 0 && waypoints[i].Destination.X < 800 &&
+					waypoints[i].Destination.Y > 0 && waypoints[i].Destination.Y < 800)
+				{
+					if((Robot.Enemy.BearingDegrees <= 90 || Robot.Enemy.BearingDegrees >= 270) && waypoints[i].Destination.Y > Robot.Enemy.Position.Y)
+					{
+						//if(Robot.Enemy.Position.X )
+					}
+				}
+
+			}
 			// Approach until it's close enough then line up next to it
-			if (Robot.Enemy.Distance > 200)
+			if ((Robot.Enemy.HeadingDegrees <= 90 || Robot.Enemy.HeadingDegrees >= 270) && Robot.Enemy.Position.Y + 100 < 600 ) // Pick points on the north side, because the tank is facing north.
 			{
-				Robot.SetTurnRight(MathHelpers.normalizeBearing(Robot.Enemy.BearingDegrees));
-				Robot.SetAhead(Robot.Enemy.Distance - 200);
+				// Check which side is closest to a wall, and pick the opposite
+				if (Robot.Enemy.Position.X <= 400) // He's closest to the left wall
+				{
+					Robot.Seek(new Point2D(Robot.Enemy.Position.X + 100, Robot.Enemy.Position.Y + 100));
+				}
+				else // right wall;
+				{
+					Robot.Seek(new Point2D(Robot.Enemy.Position.X - 100, Robot.Enemy.Position.Y + 100));
+
+				}
 			}
-			else
+			else // Pick points on the south side.
 			{
-				Robot.SetTurnRight(MathHelpers.normalizeBearing(-Robot.Heading + Robot.Enemy.HeadingDegrees));
-				Robot.SetAhead(20);
-			}
+				// Check which side is closest to a wall, and pick the opposite
+				if (Robot.Enemy.Position.X <= 400) // He's closest to the left wall
+				{
+					Robot.Seek(new Point2D(Robot.Enemy.Position.X + 100, Robot.Enemy.Position.Y - 100));
+				}
+				else // right wall;
+				{
+					Robot.Seek(new Point2D(Robot.Enemy.Position.X - 100, Robot.Enemy.Position.Y - 100));
+				}
+			}		
 			string retState = null;
 			if (Robot.DistanceCompleted()) {
 				retState = "Idle";
