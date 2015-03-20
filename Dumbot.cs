@@ -25,6 +25,7 @@ namespace PG4500_2015_Innlevering1
 
 		public klemag_hyleiv_DumBot()
 		{
+			FireThreshold = 1000;
 			// Defining the possible states for this fsm. (Also, the 1st one listed becomes the default state.)
 			_radarFSM = new FiniteStateMachine(new State[] { new DrvRadarSearch(), new DrvRadarLock() });
 			_turretFSM = new FiniteStateMachine(new State[] { new DrvTurrentIdle(), new DrvTurretAim(), new DrvTurretFire() });
@@ -108,6 +109,17 @@ namespace PG4500_2015_Innlevering1
 			return targetVector;
 		}
 
+		public override void OnBulletHit(BulletHitEvent hitData)
+		{
+			base.OnBulletHit(hitData);
+			FireThreshold += 50;
+		}
 
+		public override void OnBulletMissed(BulletMissedEvent evnt)
+		{
+			base.OnBulletMissed(evnt);
+			if (FireThreshold >= 500)
+				FireThreshold -= 50;
+		}
 	}
 }
