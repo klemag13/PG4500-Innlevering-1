@@ -63,7 +63,7 @@ namespace PG4500_2015_Innlevering1
 
 			// If we're out of energy, don't bother swapping states, as that will just make runtime bugs.
 			if (!Energy.IsCloseToZero()) {
-				_wheelsFSM.Queue("Engage");
+				//_wheelsFSM.Queue("Engage");
 				_turretFSM.Queue("Aim");
 				_radarFSM.Queue("Lock");
 			}
@@ -82,8 +82,13 @@ namespace PG4500_2015_Innlevering1
 			_wheelsFSM.Init(this);
 
 			// Set some colors on our robot. (Body, gun, radar, bullet, and scan arc.)
-			SetColors(Color.LightSlateGray, Color.DimGray, Color.Gray, Color.White, Color.LightPink);
-
+			SetColors(
+				Color.DarkRed, //Body
+				Color.Black, //Gun
+				Color.OrangeRed, //Radar
+				Color.OrangeRed, //Bullet
+				Color.Red//Scan arc
+			);
 			// NOTE: Total distance each element can move remains the same, whether these ones are true or false. 
 			//       Example: Gun swivels a maximum of 20 degrees in addition to what the body swivels (if anything) 
 			//       each turn, no matter what IsAdjustGunForRobotTurn is set to.
