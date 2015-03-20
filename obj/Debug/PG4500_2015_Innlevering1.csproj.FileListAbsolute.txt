@@ -14,3 +14,9 @@ C:\Users\Magnar\Documents\PG4500-Innlevering-1\bin\Debug\PG4500_2015_Innlevering
 C:\Users\Magnar\Documents\PG4500-Innlevering-1\bin\Debug\PG4500_2015_Innlevering1.pdb
 C:\Users\Magnar\Documents\PG4500-Innlevering-1\bin\Debug\robocode.dll
 C:\Users\Magnar\Documents\PG4500-Innlevering-1\bin\Debug\robocode.xml
+C:\Users\Eivind\Documents\GitHub\PG4500-Innlevering-1\bin\Debug\PG4500_2015_Innlevering1.dll
+C:\Users\Eivind\Documents\GitHub\PG4500-Innlevering-1\bin\Debug\PG4500_2015_Innlevering1.pdb
+C:\Users\Eivind\Documents\GitHub\PG4500-Innlevering-1\bin\Debug\robocode.xml
+C:\Users\Eivind\Documents\GitHub\PG4500-Innlevering-1\obj\Debug\PG4500_2015_Innlevering1.csprojResolveAssemblyReference.cache
+C:\Users\Eivind\Documents\GitHub\PG4500-Innlevering-1\obj\Debug\PG4500_2015_Innlevering1.dll
+C:\Users\Eivind\Documents\GitHub\PG4500-Innlevering-1\obj\Debug\PG4500_2015_Innlevering1.pdb
