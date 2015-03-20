@@ -112,14 +112,14 @@ namespace PG4500_2015_Innlevering1
 		public override void OnBulletHit(BulletHitEvent hitData)
 		{
 			base.OnBulletHit(hitData);
-			FireThreshold += 50;
+			FireThreshold *= 1.2;
 		}
 
 		public override void OnBulletMissed(BulletMissedEvent evnt)
 		{
 			base.OnBulletMissed(evnt);
-			if (FireThreshold >= 500)
-				FireThreshold -= 50;
+			if (FireThreshold >= 200)
+				FireThreshold *= 0.9;
 		}
 	}
 }

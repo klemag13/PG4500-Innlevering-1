@@ -26,7 +26,7 @@ namespace PG4500_2015_Innlevering1.AI_States
 			return v;
 		}
 
-		private double calculateBearing(EnemyData e, int t, int fireThreshold)
+		private double calculateBearing(EnemyData e, int t, double fireThreshold)
 		{
 			int n;
 			double bVelocity = 20 - 3 * Rules.MAX_BULLET_POWER;
