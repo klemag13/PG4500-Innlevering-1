@@ -63,53 +63,24 @@ namespace PG4500_2015_Innlevering1.AI_States
 			_targetPosition = Robot.Enemy.Position;
 
 			// Add the points in a list
-			Waypoint[] waypoints = { new Waypoint(Robot, new Point2D(Robot.Enemy.Position.X + 100, Robot.Enemy.Position.Y + 100)),
-									 new Waypoint(Robot, new Point2D(Robot.Enemy.Position.X + 100, Robot.Enemy.Position.Y + 100)),
-									 new Waypoint(Robot, new Point2D(Robot.Enemy.Position.X + 100, Robot.Enemy.Position.Y + 100)),
-									 new Waypoint(Robot, new Point2D(Robot.Enemy.Position.X + 100, Robot.Enemy.Position.Y + 100))
+			Waypoint[] waypoints = { new Waypoint(Robot, new Point2D(Robot.Enemy.Position.X + 150, Robot.Enemy.Position.Y + 150)),
+									 new Waypoint(Robot, new Point2D(Robot.Enemy.Position.X - 150, Robot.Enemy.Position.Y + 150)),
+									 new Waypoint(Robot, new Point2D(Robot.Enemy.Position.X + 150, Robot.Enemy.Position.Y - 150)),
+									 new Waypoint(Robot, new Point2D(Robot.Enemy.Position.X - 150, Robot.Enemy.Position.Y - 150))
 								   };
 			// Keep track of the best waypoint
 			int waypointIndex = 0;
 
-			for (int i = 0; i < 4; i++ )
+			for (int i = 1; i < 4; i++ )
 			{
-				// Is the point on the map?
-				if (waypoints[i].Destination.X > 0 && waypoints[i].Destination.X < 800 &&
-					waypoints[i].Destination.Y > 0 && waypoints[i].Destination.Y < 800)
-				{
-					if((Robot.Enemy.BearingDegrees <= 90 || Robot.Enemy.BearingDegrees >= 270) && waypoints[i].Destination.Y > Robot.Enemy.Position.Y)
-					{
-						//if(Robot.Enemy.Position.X )
-					}
-				}
-
+				Vector2D waypointToCenter = new Vector2D(waypoints[i].Destination.X - 400, waypoints[i].Destination.Y - 400);
+				Vector2D bestWaypointToCenter = new Vector2D(waypoints[waypointIndex].Destination.X - 400, waypoints[waypointIndex].Destination.Y - 400);
+				
+				if (waypointToCenter.Length() < bestWaypointToCenter.Length())
+					waypointIndex = i;
 			}
-			// Approach until it's close enough then line up next to it
-			if ((Robot.Enemy.HeadingDegrees <= 90 || Robot.Enemy.HeadingDegrees >= 270) && Robot.Enemy.Position.Y + 100 < 600 ) // Pick points on the north side, because the tank is facing north.
-			{
-				// Check which side is closest to a wall, and pick the opposite
-				if (Robot.Enemy.Position.X <= 400) // He's closest to the left wall
-				{
-					Robot.Seek(new Point2D(Robot.Enemy.Position.X + 100, Robot.Enemy.Position.Y + 100));
-				}
-				else // right wall;
-				{
-					Robot.Seek(new Point2D(Robot.Enemy.Position.X - 100, Robot.Enemy.Position.Y + 100));
 
-				}
-			}
-			else // Pick points on the south side.
-			{
-				// Check which side is closest to a wall, and pick the opposite
-				if (Robot.Enemy.Position.X <= 400) // He's closest to the left wall
-				{
-					Robot.Seek(new Point2D(Robot.Enemy.Position.X + 100, Robot.Enemy.Position.Y - 100));
-				}
-				else // right wall;
-				{
-					Robot.Seek(new Point2D(Robot.Enemy.Position.X - 100, Robot.Enemy.Position.Y - 100));
-				}
-			}		
+			Robot.Seek(waypoints[waypointIndex].Destination);
 			string retState = null;
 			if (Robot.DistanceCompleted()) {
 				retState = "Idle";
