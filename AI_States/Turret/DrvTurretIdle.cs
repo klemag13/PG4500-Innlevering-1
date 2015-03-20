@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PG4500_2015_Innlevering1.Robocode;
+using Santom;
 
 namespace PG4500_2015_Innlevering1.AI_States
 {
@@ -20,6 +21,7 @@ namespace PG4500_2015_Innlevering1.AI_States
 		}
 		public override string ProcessState()
 		{
+			Robot.SetTurnGunRight(MathHelpers.normalizeBearing(Robot.RadarHeading - Robot.GunHeading));
 			return null;
 		}
 
