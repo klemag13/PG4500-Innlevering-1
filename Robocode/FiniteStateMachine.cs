@@ -69,12 +69,15 @@ namespace PG4500_2015_Innlevering1.Robocode
 					break;
 				}
 			}
-
-			if (null != newState) {
-				if (newState.IsDeferred)
-					_derefferedTransitionQueue.Enqueue(newState);
-				else
-					_transitionQueue.Enqueue(newState);
+			if (_currentState.Id != newState.Id)
+			{
+				if (null != newState)
+				{
+					if (newState.IsDeferred)
+						_derefferedTransitionQueue.Enqueue(newState);
+					else
+						_transitionQueue.Enqueue(newState);
+				}
 			}
 		}
 
