@@ -32,8 +32,6 @@ namespace PG4500_2015_Innlevering1.AI_States
 
 		public override string ProcessState()
 		{
-			_targetPosition = Robot.Enemy.Position;
-
 			// Add the points in a list
 			Waypoint[] waypoints = { new Waypoint(Robot, new Point2D(Robot.Enemy.Position.X + 150, Robot.Enemy.Position.Y + 150)),
 									 new Waypoint(Robot, new Point2D(Robot.Enemy.Position.X - 150, Robot.Enemy.Position.Y + 150)),
@@ -52,14 +50,7 @@ namespace PG4500_2015_Innlevering1.AI_States
 			}
 
 			Robot.Seek(waypoints[waypointIndex].Destination);
-			string retState = null;
-			if (Robot.DistanceCompleted()) {
-				retState = "Idle";
-			} else {
-				Robot.DrawLineAndTarget(Color.LightGreen, new Point2D(Robot.X, Robot.Y), _targetPosition);
-			}
-
-			return retState;
+			return "Idle";
 		}
 	}
 }
