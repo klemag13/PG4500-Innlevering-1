@@ -30,6 +30,12 @@ namespace Santom
 			Y = cloneMe.Y;
 		}
 
+		public Point2D(Vector2D cloneMe)
+		{
+			X = cloneMe.X;
+			Y = cloneMe.Y;
+		}
+
 		/// <summary>
 		/// Constructor.
 		/// </summary>

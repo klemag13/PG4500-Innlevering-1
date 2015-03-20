@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,16 +26,13 @@ namespace PG4500_2015_Innlevering1.AI_States
 			return v;
 		}
 
-		private void calculateBearing(EnemyData e, int t)
+		private double calculateBearing(EnemyData e, int t, double fireThreshold)
 		{
 			int n;
 			double bVelocity = 20 - 3 * Rules.MAX_BULLET_POWER;
 			double eDistance = 0, bDistance = 0;
-			Vector2D target = new Vector2D(
-					   e.Position.X,
-					   e.Position.Y
-					   );
-			for (n = 0; n < t; n++)
+			Vector2D target = new Vector2D(e.Position.X, e.Position.Y);
+			for (n = 1; n <= t; n++)
 			{
 				target.X += e.Velocity*Math.Sin(e.HeadingRadians + e.TurnRateRadians);
 				target.Y += e.Velocity*Math.Cos(e.HeadingRadians + e.TurnRateRadians);
@@ -43,24 +41,34 @@ namespace PG4500_2015_Innlevering1.AI_States
 				bDistance = bVelocity * n;
 				if (bDistance > eDistance)
 					break;
-
 			}
+			Robot.DrawLineAndTarget(Color.Gold, new Point2D(target - 3), new Point2D(target + 3));
 			double targetRotation = Math.Atan2(target.X - Robot.X, target.Y - Robot.Y) * (180 / Math.PI);
 			
 			if (targetRotation > 0)
 				Robot.SetTurnGunRight(MathHelpers.normalizeBearing(targetRotation - Robot.GunHeading));
 			else
 				Robot.SetTurnGunRight(MathHelpers.normalizeBearing(targetRotation - Robot.GunHeading + 360));
-			if (Robot.GunHeat == 0)
-			{
-				Robot.SetFire((eDistance/bDistance)*Rules.MAX_BULLET_POWER);
-				Robot.Out.WriteLine("Firing with bullet power " + Math.Round((eDistance/bDistance)*Rules.MAX_BULLET_POWER*10)/10 +
-				                    " at X: " + Math.Round(target.X) + ", Y: " + Math.Round(target.Y));
-			}
+			if (n == t || eDistance > fireThreshold)
+				return -1;
+			else
+				return (eDistance/bDistance)*Rules.MAX_BULLET_POWER;
 		}
+		double bulletPower = 0;
+		long fireTime = 0;
 		public override string ProcessState()
 		{
-			calculateBearing(Robot.Enemy, 100);
+			
+			if (fireTime == Robot.Time && 
+				MathHelpers.IsCloseToZero(Robot.GunTurnRemaining) && 
+				bulletPower > 0 &&
+				Robot.GunHeat == 0)
+			{
+				Robot.SetFire(bulletPower);
+				Robot.Out.WriteLine("Firing with bullet power " + Math.Round(bulletPower*1000)/1000);
+			}
+			bulletPower = calculateBearing(Robot.Enemy, 100, Robot.FireThreshold);
+			fireTime = Robot.Time + 1;
 			return null;
 			/*if (!IsGunTurning)
 			{
