@@ -31,9 +31,10 @@ namespace PG4500_2015_Innlevering1.Robocode
 		public EnemyData Enemy { get; set; }  // Stored info about our current radar target. (Wiped each round/match.)
 		public double FireThreshold { get; set; } //Maximum distance the enemy can have before our robot stops trying to shoot it
 		public bool HasLock { get; set; }
+	    public double MaxFirepower { get; set; }
 
 
-		// P U B L I C   M E T H O D S 
+	    // P U B L I C   M E T H O D S 
 		// ---------------------------
 
 		public AdvancedRobotEx()

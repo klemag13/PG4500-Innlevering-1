@@ -40,7 +40,10 @@ namespace PG4500_2015_Innlevering1
 
 			// Loop forever. (Exiting run means no more robot fun for us!)
 			while (true) {
-
+                if (Energy < 50)
+                    MaxFirepower = Rules.MAX_BULLET_POWER / 50 * Energy;
+                else
+                    MaxFirepower = Rules.MAX_BULLET_POWER;
 				// The state machine doing its "magic".
 				if (hasEnemyFired && DistanceCompleted())
 					hasEnemyFired = false;
@@ -65,6 +68,7 @@ namespace PG4500_2015_Innlevering1
 		public override void OnScannedRobot(ScannedRobotEvent scanData)
 		{
 			HasLock = true;
+			
 			// Storing data about scan time and Enemy for later use.
 			Vector2D offset = CalculateTargetVector(HeadingRadians, scanData.BearingRadians, scanData.Distance);
 			Point2D position = new Point2D(offset.X + X, offset.Y + Y);

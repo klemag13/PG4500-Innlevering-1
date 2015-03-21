@@ -26,11 +26,11 @@ namespace PG4500_2015_Innlevering1.AI_States
 			return v;
 		}
 
-		readonly double _bVelocity = 20 - 3 * Rules.MAX_BULLET_POWER;
 		double _bulletDistance = 0;
 
 		private Vector2D PredictPos(EnemyData e, int t)
 		{
+            double _bVelocity = 20 - 3 * Robot.MaxFirepower;
 			int n;
 			Vector2D target = new Vector2D(e.Position.X, e.Position.Y);
 			for (n = 0; n <= t; n++)
@@ -61,7 +61,7 @@ namespace PG4500_2015_Innlevering1.AI_States
 			if (Robot.Enemy.Distance > Robot.FireThreshold)
 				return -1;
 			else
-				return (Robot.Enemy.Distance / _bulletDistance) * Rules.MAX_BULLET_POWER;
+				return (Robot.Enemy.Distance / _bulletDistance) * Robot.MaxFirepower;
 		}
 		double bulletPower = 0;
 		long fireTime = 0;
