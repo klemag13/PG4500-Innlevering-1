@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PG4500_2015_Innlevering1.Robocode;
+﻿using PG4500_2015_Innlevering1.Robocode;
 using Robocode.Util;
 
 namespace PG4500_2015_Innlevering1.AI_States

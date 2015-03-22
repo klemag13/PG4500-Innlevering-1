@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using PG4500_2015_Innlevering1.Robocode;
-using Robocode;
 using Santom;
 
 
@@ -13,7 +8,6 @@ namespace PG4500_2015_Innlevering1.AI_States
 {
 	class DrvTurretAim : State
 	{
-		bool IsGunTurning = false;
 		public DrvTurretAim() : base("Aim")
 		{
 

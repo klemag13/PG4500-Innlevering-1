@@ -50,7 +50,6 @@
     <Compile Include="AI_States\Wheels\DrvWheelsDodge.cs" />
     <Compile Include="AI_States\Wheels\DrvWheelsEngage.cs" />
     <Compile Include="AI_States\Wheels\DrvWheelsIdle.cs" />
-    <Compile Include="AI_States\Turret\DrvTurretFire.cs" />
     <Compile Include="General\MathHelpers.cs" />
     <Compile Include="General\Point2D.cs" />
     <Compile Include="General\Vector2D.cs" />
