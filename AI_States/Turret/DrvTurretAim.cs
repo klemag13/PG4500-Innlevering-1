@@ -28,7 +28,7 @@ namespace PG4500_2015_Innlevering1.AI_States
 
 		double _bulletDistance = 0;
 
-		private Vector2D PredictPos(EnemyData e, int t)
+        private Vector2D PredictPos(EnemyData e, int t) //Code based on http://robowiki.net/wiki/Circular_Targeting/Walkthrough
 		{
             double _bVelocity = 20 - 3 * Robot.MaxFirepower;
 			int n;
@@ -80,6 +80,7 @@ namespace PG4500_2015_Innlevering1.AI_States
 			_target = PredictPos(Robot.Enemy, 100);
 			Robot.SetTurnGunRight(CalculateBearing(_target));
 			bulletPower = CalculateFirePower();
+            Robot.SetFire(bulletPower);
 			fireTime = Robot.Time + 1;
 			Robot.DrawLineAndTarget(Color.Gold, new Point2D(Robot.Enemy.Position), new Point2D(_target));
 			return null;

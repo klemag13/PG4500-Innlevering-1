@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
 using PG4500_2015_Innlevering1.Robocode;
-using Robocode;
 using Santom;
 
 namespace PG4500_2015_Innlevering1

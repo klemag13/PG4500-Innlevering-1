@@ -29,7 +29,7 @@ namespace PG4500_2015_Innlevering1
 			FireThreshold = 1000;
 			// Defining the possible states for this fsm. (Also, the 1st one listed becomes the default state.)
 			_radarFSM = new FiniteStateMachine(new State[] { new DrvRadarSearch(), new DrvRadarLock() });
-			_turretFSM = new FiniteStateMachine(new State[] { new DrvTurrentIdle(), new DrvTurretAim(), new DrvTurretFire() });
+			_turretFSM = new FiniteStateMachine(new State[] { new DrvTurrentIdle(), new DrvTurretAim() });
 			_wheelsFSM = new FiniteStateMachine(new State[] { new DrvWheelsIdle(), new DrvWheelsDodge(), new DrvWheelsEngage() });
 		}
 
@@ -125,7 +125,7 @@ namespace PG4500_2015_Innlevering1
 			return targetVector;
 		}
 
-		//Code from http://robowiki.net/wiki/Wave_Suffering
+		//Code based on http://robowiki.net/wiki/Wave_Suffering
 		public override void OnBulletHit(BulletHitEvent e)
 		{
 			base.OnBulletHit(e);
